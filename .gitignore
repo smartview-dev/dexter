@@ -1,0 +1,25 @@
+# Global
+.env
+*.env
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker
+docker-volume/
+*.pid
+
+# Node.js
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+env/
+venv/
