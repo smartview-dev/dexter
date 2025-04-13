@@ -31,6 +31,9 @@ importers:
       "@tailwindcss/postcss":
         specifier: ^4.1.3
         version: 4.1.3
+      daisyui:
+        specifier: ^5.0.19
+        version: 5.0.19
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
@@ -3765,6 +3768,12 @@ packages:
     resolution:
       {
         integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==,
+      }
+
+  daisyui@5.0.19:
+    resolution:
+      {
+        integrity: sha512-vuxloVgdmTnGpA6CFnQyLkXuqPmusHgYZ0L5Qg1pQzAYPUMc0HM2S3brnu7xRnAUq7ZMAqyoV78Fvht7nY2svg==,
       }
 
   date-format@4.0.14:
@@ -10365,6 +10374,8 @@ snapshots:
   cssesc@3.0.0: {}
 
   custom-event@1.0.1: {}
+
+  daisyui@5.0.19: {}
 
   date-format@4.0.14: {}
 
