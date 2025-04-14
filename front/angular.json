@@ -77,7 +77,7 @@
               "buildTarget": "front:build:production"
             },
             "staging": {
-              "buildTarget": "store:build:staging"
+              "buildTarget": "front:build:staging"
             },
             "development": {
               "buildTarget": "front:build:development"

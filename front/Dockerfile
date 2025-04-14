@@ -27,7 +27,7 @@ FROM nginx:latest
 
 # Copiar los archivos compilados desde la etapa build
 # Asegúrate de reemplazar <nombre-del-proyecto> por el nombre correcto que se genere en la carpeta dist
-COPY --from=build /app/dist/front /usr/share/nginx/html
+COPY --from=build /app/dist/front/browser /usr/share/nginx/html
 
 # Exponer el puerto en el que correrá Nginx
 EXPOSE 80
