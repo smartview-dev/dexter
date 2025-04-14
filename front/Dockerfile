@@ -17,7 +17,7 @@ RUN pnpm install
 COPY . .
 
 # Construir la aplicación Angular en modo producción
-RUN ng build
+RUN pnpm run build
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:latest
