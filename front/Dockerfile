@@ -33,4 +33,4 @@ COPY --from=build /app/dist/front /usr/share/nginx/html
 EXPOSE 80
 
 # Comando para iniciar Nginx en primer plano
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
