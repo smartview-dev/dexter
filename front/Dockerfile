@@ -17,7 +17,7 @@ RUN pnpm install
 COPY . .
 
 # Construir la aplicación Angular en modo producción
-RUN pnpm run build
+RUN ng build
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:latest
@@ -33,4 +33,4 @@ COPY --from=build /app/dist/front /usr/share/nginx/html
 EXPOSE 80
 
 # Comando para iniciar Nginx en primer plano
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
