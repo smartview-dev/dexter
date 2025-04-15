@@ -1,0 +1,6 @@
+fastapi==0.115.12
+pydantic-settings==2.8.1
+python-jose[cryptography]==3.4.0
+psycopg[binary,pool]==3.2.6
+sqlmodel==0.0.24
+uvicorn==0.34.1
