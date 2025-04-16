@@ -11,7 +11,7 @@ oauth2_token = HTTPBearer(auto_error=False)
 
 class Token:
     @staticmethod
-    def validate(token: Annotated[str, Depends(oauth2_token)]) -> TokenData:
+    def access(token: Annotated[str, Depends(oauth2_token)]) -> TokenData:
         """
         Validate the given token.
         """
@@ -22,4 +22,4 @@ class Token:
                 headers={"Authenticate": "Bearer"},
             )
 
-        return Security.decode_token(token.credentials)
+        return Security.validate_access_token(token.credentials)

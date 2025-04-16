@@ -21,7 +21,7 @@ db_session = router.dependencies[0]
 @router.get("", response_model=UserRead)
 def get_user(
     session: Session = db_session,
-    token: TokenData = Depends(TokenValidator.validate),
+    token: TokenData = Depends(TokenValidator.access),
 ):
     user = UserService.get_by_email(session, token.email)
     return user
@@ -31,7 +31,7 @@ def get_user(
 def get_users(
     email: str,
     session: Session = db_session,
-    _=Depends(TokenValidator.validate),
+    _=Depends(TokenValidator.access),
 ):
     user = UserService.get_by_email(session, email)
     return user
@@ -41,7 +41,7 @@ def get_users(
 def create_user(
     user: UserCreate,
     session: Session = db_session,
-    _=Depends(TokenValidator.validate),
+    _=Depends(TokenValidator.access),
 ):
     user = UserService.create(session, user)
     return user
