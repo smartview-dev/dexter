@@ -4,11 +4,11 @@ from modules.users.v1.routes import router as v1_user_router
 
 app = FastAPI(
     title="API dexter",
-    description="API para gestionar chatbots",
+    description="API to manage chatbots",
     version="0.1.0",
     openapi_tags=[
-        {"name": "v1", "description": "Version 1 del API"},
-        {"name": "users", "description": "Gestión de usuarios"},
+        {"name": "v1", "description": "Version 1 of the API"},
+        {"name": "users", "description": "User management"},
     ],
 )
 
