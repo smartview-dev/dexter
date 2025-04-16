@@ -1,12 +1,13 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
+import uuid
+from pydantic import BaseModel, EmailStr
 
 
 class UserBase(BaseModel):
     first_name: str
     last_name: str
-    email: str
+    email: EmailStr
 
     class Config:
         from_attributes = True
@@ -20,7 +21,7 @@ class UserCreate(UserBase):
 
 
 class UserRead(UserBase):
-    id: int
+    id: uuid.UUID
     is_active: bool
     created_at: datetime
     updated_at: Optional[datetime] = None

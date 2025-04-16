@@ -1,25 +1,56 @@
+from typing import Annotated
 from fastapi import APIRouter, Depends
+from fastapi.security import HTTPBasicCredentials
 from sqlmodel import Session
+
+from auth import Security, Token, TokenData, TokenValidator
 from core import get_session
 from .services import UserService
 from .schemes import UserCreate, UserRead
 
 
-router = APIRouter(prefix="/v1/users", tags=["v1", "users"])
+router = APIRouter(
+    dependencies=[Depends(get_session)],
+    prefix="/v1/users",
+    tags=["v1", "users"],
+)
 
-@router.get("/users/{email}", response_model=UserRead)
-def get_user_profile(
-    email: str,
-    session: Session = Depends(get_session)
+db_session = router.dependencies[0]
+
+
+@router.get("", response_model=UserRead)
+def get_user(
+    session: Session = db_session,
+    token: TokenData = Depends(TokenValidator.validate),
 ):
-    user = UserService.get_user_by_email(session, email)
+    user = UserService.get_by_email(session, token.email)
     return user
 
 
-@router.post("/users", response_model=UserRead)
+@router.get("/{email}", response_model=UserRead)
+def get_users(
+    email: str,
+    session: Session = db_session,
+    _=Depends(TokenValidator.validate),
+):
+    user = UserService.get_by_email(session, email)
+    return user
+
+
+@router.post("", response_model=UserRead)
 def create_user(
     user: UserCreate,
-    session: Session = Depends(get_session),
+    session: Session = db_session,
+    _=Depends(TokenValidator.validate),
 ):
-    user = UserService.create_user(session, user)
+    user = UserService.create(session, user)
     return user
+
+
+@router.post("/login", response_model=Token)
+def login_user(
+    form_data: Annotated[HTTPBasicCredentials, Depends()],
+    session: Session = db_session,
+):
+    user = UserService.login(session, form_data.username, form_data.password)
+    return Security.generate_tokens(user)
