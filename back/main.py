@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from modules.users.v1.routes import router as v1_user_router
 
 origins = [
-    "dexter.smartview.dev",
+    "https://dexter.smartview.dev",
     "http://localhost:4200",
 ]
 
