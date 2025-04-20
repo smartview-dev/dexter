@@ -17,7 +17,6 @@ type AlertStyle = 'soft' | 'outline' | 'dash';
   styleUrl: './alert.component.css',
 })
 export class AlertComponent {
-  readonly info = Info;
   type = input.required<AlertType>();
   variant = input<AlertStyle>();
   message = input.required<string>();

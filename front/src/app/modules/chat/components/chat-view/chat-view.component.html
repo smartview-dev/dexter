@@ -1,0 +1,12 @@
+<div
+  class="chat"
+  [ngClass]="{ 'chat-start': type() === 'start', 'chat-end': type() === 'end' }"
+>
+  <p class="chat-bubble">
+    <span
+      *ngIf="requestStatus() === 'loading'"
+      class="loading loading-infinity loading-xs"
+    ></span>
+    {{ message() }}
+  </p>
+</div>

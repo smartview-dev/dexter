@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
+import { ChatViewComponent } from '@modules/chat/components/chat-view/chat-view.component';
+import { CircleArrowUp, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
+  imports: [ChatViewComponent, LucideAngularModule],
 })
-export class IndexComponent {}
+export class IndexComponent {
+  readonly icon = CircleArrowUp;
+}
