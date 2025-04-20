@@ -9,7 +9,7 @@ COPY src src
 COPY angular.json tsconfig.json tsconfig.app.json ./
 
 RUN pnpm install && \
-  pnpm run build -- --configuration production --output-path=dist/browser
+  pnpm run build --output-path=dist/browser
 
 FROM nginx:1.27.5-alpine
 
