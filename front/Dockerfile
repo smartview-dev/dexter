@@ -1,36 +1,24 @@
-# Etapa 1: Construcción de la aplicación Angular
-FROM node:latest AS build
+FROM node:22.14.0-alpine AS build
 
-# Instalar pnpm globalmente
 RUN npm install -g pnpm
 
-# Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos de declaración de dependencias para aprovechar el cacheo
 COPY package.json pnpm-lock.yaml ./
+COPY src src
+COPY angular.json tsconfig.json tsconfig.app.json ./
 
-# Instalar dependencias con pnpm
-RUN pnpm install
+RUN pnpm install --frozen-lockfile && \
+  pnpm run build -- --configuration production --output-path=dist/browser
 
-# Copiar el resto de la aplicación
-COPY . .
+FROM nginx:1.27.5-alpine
 
-# Construir la aplicación Angular en modo producción
-RUN pnpm run build
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Etapa 2: Servir la aplicación con Nginx
-FROM nginx:latest
+COPY --from=build /app/dist/browser /usr/share/nginx/html
 
-# Copiar la configuración personalizada de Nginx (opcional)
-# COPY nginx.conf /etc/nginx/nginx.conf
+RUN chmod -R 755 /usr/share/nginx/html && \
+  chown -R nginx:nginx /usr/share/nginx/html
 
-# Copiar los archivos compilados desde la etapa build
-# Asegúrate de reemplazar <nombre-del-proyecto> por el nombre correcto que se genere en la carpeta dist
-COPY --from=build /app/dist/front/browser /usr/share/nginx/html
-
-# Exponer el puerto en el que correrá Nginx
 EXPOSE 80
-
-# Comando para iniciar Nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]
