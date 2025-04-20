@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChatViewComponent } from '@modules/chat/components/chat-view/chat-view.component';
+import { ChatViewComponent } from '@chat/components/chat-view/chat-view.component';
 import { CircleArrowUp, LucideAngularModule } from 'lucide-angular';
 
 @Component({

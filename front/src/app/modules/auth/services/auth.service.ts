@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { ResponseLogin } from '../models/auth.model';
 import { tap } from 'rxjs';
-import { TokenService } from './token.service';
+import { TokenService } from '@shared/services/token.service';
+import { ResponseLogin } from '@auth/models/auth.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { RequestStatus } from '@modules/shared/models/request-status.model';
+import { RequestStatus } from '@shared/models/request-status.model';
 
 type ChatType = 'end' | 'start';
 

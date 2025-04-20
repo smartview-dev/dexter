@@ -24,7 +24,7 @@
       />
 
       <fieldset
-        class="fieldset bg-transparent border border-base-200 p-4 rounded-box"
+        class="fieldset bg-base-200 border border-base-200 p-4 rounded-box"
       >
         <legend class="fieldset-legend">Iniciar Sesión</legend>
         <label class="fieldset-label" for="email">Correo Electrónico</label>
@@ -52,7 +52,16 @@
           title="La contraseña debe tener al menos 5 caracteres."
         />
 
-        <button class="btn btn-neutral mt-4">Iniciar Sesión</button>
+        <button
+          class="btn btn-neutral mt-4"
+          [disabled]="status() === 'loading'"
+        >
+          <span
+            *ngIf="status() === 'loading'"
+            class="loading loading-dots loading-md"
+          ></span>
+          Iniciar Sesión
+        </button>
       </fieldset>
     </form>
 

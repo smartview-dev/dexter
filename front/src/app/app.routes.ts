@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { NotFoundComponent } from '@modules/not-found/not-found.component';
-import { authGuard } from '@modules/shared/guards/auth.guard';
-import { redirectGuard } from '@modules/shared/guards/redirect.guard';
+import { authGuard } from '@auth/guards/auth.guard';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
+import { redirectGuard } from '@shared/guards/redirect.guard';
 
 export const routes: Routes = [
   {
@@ -11,7 +11,9 @@ export const routes: Routes = [
         path: '',
         canActivate: [redirectGuard],
         loadComponent: () =>
-          import('./modules/auth/auth.component').then((m) => m.AuthComponent),
+          import('./modules/auth/pages/auth.component').then(
+            (m) => m.AuthComponent,
+          ),
       },
       {
         path: '',

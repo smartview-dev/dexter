@@ -13,6 +13,13 @@ const routes: Routes = [
           import('./chat/pages/index/index.component').then(
             (m) => m.IndexComponent,
           ),
+        title: 'Dexter: Chat',
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.UsersModule),
+        title: 'Dexter: Users',
       },
     ],
   },

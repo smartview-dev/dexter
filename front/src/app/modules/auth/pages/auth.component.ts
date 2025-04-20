@@ -1,10 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { NgIf, NgOptimizedImage } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '@modules/shared/services/auth.service';
-import { RequestStatus } from '@modules/shared/models/request-status.model';
-import { AlertComponent } from '@modules/shared/components/alert/alert.component';
 import { Router } from '@angular/router';
+import { AlertComponent } from '@shared/components/alert/alert.component';
+import { RequestStatus } from '@shared/models/request-status.model';
+import { AuthService } from '@auth/services/auth.service';
 
 @Component({
   selector: 'app-auth',
