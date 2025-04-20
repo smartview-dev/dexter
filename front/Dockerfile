@@ -5,17 +5,16 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-COPY src src
-COPY angular.json tsconfig.json tsconfig.app.json ./
+COPY . .
 
 RUN pnpm install && \
-  pnpm run build --output-path=dist/browser
+  pnpm run build
 
 FROM nginx:1.27.5-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=build /app/dist/browser /usr/share/nginx/html
+COPY --from=build /app/dist/front/browser /usr/share/nginx/html
 
 RUN chmod -R 755 /usr/share/nginx/html && \
   chown -R nginx:nginx /usr/share/nginx/html
