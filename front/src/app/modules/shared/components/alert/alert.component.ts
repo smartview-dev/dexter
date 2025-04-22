@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import {
   AlertTriangle,
@@ -12,13 +13,13 @@ type AlertStyle = 'soft' | 'outline' | 'dash';
 
 @Component({
   selector: 'app-alert',
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, CommonModule],
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.css',
 })
 export class AlertComponent {
   type = input.required<AlertType>();
-  variant = input<AlertStyle>();
+  style = input<AlertStyle>();
   message = input.required<string>();
   class = input<string>();
 
@@ -30,14 +31,5 @@ export class AlertComponent {
       error: XCircle,
     };
     return icons[this.type()];
-  });
-
-  alertClass = computed(() => {
-    const base = 'alert';
-    const typeClass = `alert-${this.type()}`;
-    const variantClass = this.variant() ? `alert-${this.variant()}` : '';
-    const custom = this.class() || '';
-
-    return `${base} ${typeClass} ${variantClass} ${custom}`;
   });
 }

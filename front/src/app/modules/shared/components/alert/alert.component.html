@@ -1,4 +1,17 @@
-<div role="alert" [class]="alertClass()">
+<div
+  role="alert"
+  class="alert"
+  [class]="class() || ''"
+  [ngClass]="{
+    'alert-error': type() === 'error',
+    'alert-info': type() === 'info',
+    'alert-success': type() === 'success',
+    'alert-warning': type() === 'warning',
+    'alert-dash': style() === 'dash',
+    'alert-outline': style() === 'outline',
+    'alert-soft': style() === 'soft',
+  }"
+>
   <lucide-angular [img]="icon()" />
   <span>{{ message() }}</span>
 </div>
