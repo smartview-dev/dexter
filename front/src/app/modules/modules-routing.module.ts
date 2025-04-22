@@ -16,6 +16,12 @@ const routes: Routes = [
         title: 'Dexter: Chat',
       },
       {
+        path: 'config',
+        loadChildren: () =>
+          import('./config/config.module').then((m) => m.ConfigModule),
+        title: 'Dexter: Configuration',
+      },
+      {
         path: 'users',
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
