@@ -10,11 +10,11 @@ import { UsersService } from '@users/services/users.service';
   styleUrl: './me.component.css',
 })
 export class MeComponent implements OnInit {
-  private userService = inject(UsersService);
+  private usersService = inject(UsersService);
   public user: User | null = null;
 
   ngOnInit() {
-    this.userService.user$.subscribe((user) => {
+    this.usersService.user$.subscribe((user) => {
       this.user = user;
     });
   }

@@ -10,9 +10,9 @@ import { User } from '@users/models/user.model';
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent implements OnInit {
-  private userService = inject(UsersService);
+  private usersService = inject(UsersService);
 
   ngOnInit() {
-    this.userService.getMe().subscribe();
+    this.usersService.getMe().subscribe();
   }
 }
