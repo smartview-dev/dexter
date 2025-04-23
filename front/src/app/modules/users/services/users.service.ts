@@ -9,7 +9,7 @@ import { BehaviorSubject, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class UsersService {
-  private readonly loginEndpoint = `${environment.apiUrl}/v1/users`;
+  private readonly usersEndpoint = `${environment.apiUrl}/v1/users`;
   user$ = new BehaviorSubject<User | null>(null);
 
   constructor(
@@ -19,7 +19,7 @@ export class UsersService {
 
   getMe() {
     return this.http
-      .get<User>(`${this.loginEndpoint}/me`, {
+      .get<User>(`${this.usersEndpoint}/me`, {
         headers: {
           Authorization: `Bearer ${this.tokenService.getToken()}`,
         },

@@ -9,7 +9,7 @@ import { ResponseLogin } from '@auth/models/auth.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly loginEndpoint = `${environment.apiUrl}/v1/users/login`;
+  private readonly authEndpoint = `${environment.apiUrl}/v1/auth/login`;
 
   constructor(
     private http: HttpClient,
@@ -22,7 +22,7 @@ export class AuthService {
       .set('password', params.password);
     return this.http
       .post<ResponseLogin>(
-        `${this.loginEndpoint}?${httpParams.toString()}`,
+        `${this.authEndpoint}?${httpParams.toString()}`,
         null,
       )
       .pipe(
