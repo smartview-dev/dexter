@@ -1,4 +1,4 @@
-<nav class="navbar bg-base-100 shadow-sm fixed top-0 z-50">
+<nav class="navbar bg-base shadow-sm fixed top-0 z-50">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -22,10 +22,12 @@
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
       >
         <li>
-          <a routerLink="/chat" routerLinkActive="bg-accent">Chat</a>
+          <a routerLink="/chat" routerLinkActive="bg-primary">Chat</a>
         </li>
         <li>
-          <a routerLink="/config" routerLinkActive="bg-accent">Configuración</a>
+          <a routerLink="/config" routerLinkActive="bg-primary"
+            >Configuración</a
+          >
         </li>
         <!-- <li>
           <a>Parent</a>
@@ -43,10 +45,10 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       <li>
-        <a routerLink="/chat" routerLinkActive="bg-accent">Chat</a>
+        <a routerLink="/chat" routerLinkActive="bg-primary">Chat</a>
       </li>
       <li>
-        <a routerLink="/config" routerLinkActive="bg-accent">Configuración</a>
+        <a routerLink="/config" routerLinkActive="bg-primary">Configuración</a>
       </li>
       <!-- <li>
         <details>
@@ -67,9 +69,9 @@
       <div
         tabindex="0"
         role="button"
-        class="btn btn-ghost btn-circle avatar avatar-placeholder"
+        class="btn btn-ghost border-black btn-circle avatar avatar-placeholder"
       >
-        <div class="bg-accent-content text-base-100 w-12 rounded-full">
+        <div class="bg-white text-primary w-12 rounded-full">
           <span class="text-xl"
             >{{ user?.first_name?.[0] || "" | uppercase
             }}{{ user?.last_name?.[0] || "" | uppercase }}</span
