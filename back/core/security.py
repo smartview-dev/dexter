@@ -4,7 +4,6 @@ from fastapi import HTTPException, status
 from jose import JWTError, jwt
 
 from core import settings
-from modules.users.v1.schemes import UserRead
 from .schemes import Token, TokenData
 
 
@@ -36,7 +35,7 @@ class Security:
 
     @staticmethod
     def _generate_payload(
-        user: UserRead, exp_delta: timedelta, token_type: str
+        user: "UserRead", exp_delta: timedelta, token_type: str
     ) -> dict:
         """
         Generate the payload for a token for the given user, expiration timedelta, and token type.
@@ -64,7 +63,7 @@ class Security:
         )
 
     @staticmethod
-    def generate_tokens(user: UserRead) -> Token:
+    def generate_tokens(user: "UserRead") -> Token:
         """
         Generate both access and refresh tokens for the given user.
         """

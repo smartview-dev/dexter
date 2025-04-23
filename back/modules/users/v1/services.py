@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
 from sqlmodel import Session, select
 
-from auth import Security
+from core import Security
 from .models import UserModel
 from .schemes import UserCreate, UserRead
 

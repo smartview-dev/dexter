@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from modules.users.v1.routes import router as v1_user_router
+from modules.auth.v1 import router as v1_auth_router
+from modules.users.v1 import router as v1_user_router
 
 origins = [
     "https://dexter.smartview.dev",
@@ -28,3 +29,4 @@ app.add_middleware(
 )
 
 app.include_router(v1_user_router)
+app.include_router(v1_auth_router)
