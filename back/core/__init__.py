@@ -1,5 +1,7 @@
 from .base_model import BaseModel
+from .bot import Bot
 from .config import settings
+from .custom_pg_vector import CustomPGVector
 from .database import get_session
 from .schemes import Token, TokenData
 from .security import Security
@@ -8,6 +10,8 @@ from .token import Token as TokenValidator
 
 __all__ = [
     "BaseModel",
+    "Bot",
+    "CustomPGVector",
     "get_session",
     "settings",
     "Security",
